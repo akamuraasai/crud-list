@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { db } = require('./database');
 const lists = require('./Routes/lists');
+const userMiddleware = require('./Middlewares/user');
 
 const availableRoutes = stack => stack
   .reduce((routes, r) => (r.route && r.route.path ? [...routes, r.route.path] : routes), []);
@@ -22,6 +23,9 @@ const server = (port, defaultServer = express()) => {
       app.use(bodyParser.urlencoded({
         extended: true,
       }));
+
+      // Custom Middlewares
+      app.use(userMiddleware);
 
       // Custom Routes
       app.use('/', listRoutes);
