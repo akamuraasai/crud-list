@@ -17,6 +17,7 @@ const getUserByToken = async (Authorization) => {
 
     return { id };
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.log(err);
     return {};
   }

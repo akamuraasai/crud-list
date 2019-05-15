@@ -42,6 +42,6 @@ const server = (port, defaultServer = express()) => {
       });
     },
   });
-}
+};
 
 module.exports = server;

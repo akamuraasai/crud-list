@@ -5,13 +5,14 @@ module.exports = {
   opts: {
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT || 'mysql',
+    // eslint-disable-next-line no-console
     logging: process.env.DB_LOG ? console.log : null,
 
     pool: {
       max: 2,
       min: 0,
       acquire: 30000,
-      idle: 10000
+      idle: 10000,
     },
-  }
+  },
 };

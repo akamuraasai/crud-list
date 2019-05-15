@@ -1,5 +1,6 @@
 const List = require('../Models/List');
 const { Sequelize } = require('../database');
+
 const baseRoute = '/lists';
 
 const toNumber = arr => arr.map(Number);
@@ -79,7 +80,7 @@ const routes = (router) => {
           [Sequelize.Op.in]: ids,
         },
         userId,
-      }
+      },
     });
 
     const lists = await List.findAll({
