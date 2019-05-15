@@ -1,11 +1,11 @@
 module.exports = {
   database: process.env.DATABASE,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   opts: {
-    host: process.env.HOST,
-    dialect: process.env.DIALECT || 'mysql',
-    logging: process.env.LOG ? console.log : null,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT || 'mysql',
+    logging: process.env.DB_LOG ? console.log : null,
 
     pool: {
       max: 2,
@@ -13,7 +13,5 @@ module.exports = {
       acquire: 30000,
       idle: 10000
     },
-    // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
-    operatorsAliases: false
   }
 };
