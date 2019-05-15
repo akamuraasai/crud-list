@@ -38,7 +38,7 @@ const routes = (router) => {
     const list = await List.create({ name, products: strProducts, userId });
     const obj = JSON.parse(JSON.stringify(list));
 
-    res.send(productsToArray(obj));
+    res.status(201).send(productsToArray(obj));
   });
 
   router.patch(`${baseRoute}/:id`, async (req, res) => {
