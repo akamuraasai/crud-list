@@ -4,7 +4,7 @@ const baseRoute = '/lists';
 
 const productsToArray = obj => ({
   ...obj,
-  products: (obj.products || '').split(','),
+  products: (obj && obj.products.length > 0) ? obj.products.split(',') : [],
 });
 
 const routes = (router) => {
