@@ -8,7 +8,7 @@ const userMiddleware = require('./Middlewares/user');
 const availableRoutes = stack => stack
   .reduce((routes, r) => (r.route && r.route.path ? [...routes, r.route.path] : routes), []);
 
-const server = (port, defaultServer = express()) => {
+const server = (port, defaultServer = express(), testing = false) => {
   const app = defaultServer;
   const listRoutes = lists(express.Router());
 
@@ -25,7 +25,9 @@ const server = (port, defaultServer = express()) => {
       }));
 
       // Custom Middlewares
-      app.use(userMiddleware);
+      if (!testing) {
+        app.use(userMiddleware);
+      }
 
       // Custom Routes
       app.use('/', listRoutes);

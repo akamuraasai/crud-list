@@ -1,6 +1,7 @@
 module.exports = wallaby => ({
   files: [
     'setupJest.js',
+    'config/*.*',
     '__fixtures__/**/*.json',
     'src/**/*.js?(x)',
     '!src/**/*.test.js?(x)',
