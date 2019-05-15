@@ -7,6 +7,8 @@ const toNumber = arr => arr.map(Number);
 const productsToArray = obj => ({
   ...obj,
   products: (obj && obj.products.length > 0) ? toNumber(obj.products.split(',')) : [],
+  createdAt: Math.floor(new Date(obj.createdAt || '') / 1000),
+  updatedAt: Math.floor(new Date(obj.updatedAt || '') / 1000),
 });
 
 const routes = (router) => {
