@@ -1,0 +1,10 @@
+{
+  "apps" : [{
+    "name": "list-api-staging",
+    "script" : "./index.js",
+    "watch": true,
+    "merge_logs": true,
+    "instances" : "max",
+    "exec_mode" : "cluster"
+  }]
+}
