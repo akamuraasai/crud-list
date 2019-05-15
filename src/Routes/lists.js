@@ -18,6 +18,7 @@ const routes = (router) => {
       where: {
         userId,
       },
+      order: [['createdAt', 'DESC']],
       raw: true,
     });
     res.send(lists.map(productsToArray));
@@ -85,6 +86,7 @@ const routes = (router) => {
       where: {
         userId,
       },
+      order: [['createdAt', 'DESC']],
       raw: true,
     });
     res.send(lists.map(productsToArray));
