@@ -2,9 +2,11 @@ const List = require('../Models/List');
 const { Sequelize } = require('../database');
 const baseRoute = '/lists';
 
+const toNumber = arr => arr.map(Number);
+
 const productsToArray = obj => ({
   ...obj,
-  products: (obj && obj.products.length > 0) ? obj.products.split(',') : [],
+  products: (obj && obj.products.length > 0) ? toNumber(obj.products.split(',')) : [],
 });
 
 const routes = (router) => {
