@@ -1,0 +1,28 @@
+{
+  "name": "crud-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akamuraasai/crud-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akamuraasai/crud-list/issues"
+  },
+  "homepage": "https://github.com/akamuraasai/crud-list#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mysql2": "^1.6.5",
+    "nodemon": "^1.19.0",
+    "sequelize": "^5.8.6",
+    "sqlite3": "^4.0.8"
+  }
+}
