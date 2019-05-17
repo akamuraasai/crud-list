@@ -32,7 +32,7 @@ const userMiddleware = async (req, res, next) => {
     return next();
   }
 
-  return res.status(401).send('Unauthorized');
+  return res.status(401).send('"Unauthorized"');
 };
 
 module.exports = userMiddleware;
