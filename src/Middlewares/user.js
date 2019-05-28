@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 const endpoint = process.env.MAGENTO_ENDPOINT;
-const url = `${endpoint}/users/me//13`;
+const url = `${endpoint}/users/me`;
 const urlCustomer = 'https://staging.zaxapp.com.br/graphql';
 const getToken = ({ headers = {} }) => headers.authorization;
 
