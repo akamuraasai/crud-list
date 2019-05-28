@@ -27,7 +27,7 @@ const getUserByToken = async (Authorization) => {
 const getCustomerByToken = async (Authorization) => {
   try {
     const response = await fetch(urlCustomer, {
-      method: 'get',
+      method: 'post',
       headers: {
         'Content-Type': 'application/json',
         Authorization,
