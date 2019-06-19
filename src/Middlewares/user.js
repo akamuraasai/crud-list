@@ -73,18 +73,17 @@ const userMiddleware = async (req, res, next) => {
   const token = getToken(req);
   // const user = await getUserByToken(token);
   const customer = await getCustomerByToken(token);
-  const customerProd = await getCustomerByTokenProd(token);
+  if (customer.id !== undefined) {
+    req.userId = customer.id;
+    return next();
+  }
 
   // if (user.id !== undefined) {
   //   req.userId = user.id;
   //   return next();
   // }
 
-  if (customer.id !== undefined) {
-    req.userId = customer.id;
-    return next();
-  }
-
+  const customerProd = await getCustomerByTokenProd(token);
   if (customerProd.id !== undefined) {
     req.userId = customerProd.id;
     return next();
