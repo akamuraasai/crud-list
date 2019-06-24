@@ -36,14 +36,14 @@ const getCustomerByToken = async (Authorization) => {
       body: '{"query":"{customer{id}}"}',
     });
     const { data = {} } = await response.json();
-    const { customer } = data;
+    const { customer = {} } = data;
     const { id } = customer;
 
     return { id };
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);
-    return { error: 500, message: err.message };
+    return { error: err.type, message: err.message };
   }
 };
 
@@ -58,14 +58,14 @@ const getCustomerByTokenProd = async (Authorization) => {
       body: '{"query":"{customer{id}}"}',
     });
     const { data = {} } = await response.json();
-    const { customer } = data;
+    const { customer = {} } = data;
     const { id } = customer;
 
     return { id };
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);
-    return { error: 500, message: err.message };
+    return { error: err.type, message: err.message };
   }
 };
 
@@ -90,14 +90,18 @@ const userMiddleware = async (req, res, next) => {
   }
 
 
-  if (customerProd.error) {
-    return res.status(customerProd.error).send(customerProd.message);
+  if (customerProd.error === 'invalid-json') {
+    return res.status(500).send(customerProd.message);
   }
-  if (customer.error) {
-    return res.status(customer.error).send(customer.message);
+  if (customer.error === 'invalid-json') {
+    return res.status(500).send(customer.message);
   }
 
-  return res.status(401).send('"Unauthorized"');
+  if (customer.error === undefined && customerProd.error === undefined) {
+    return res.status(401).send('"Unauthorized"');
+  }
+
+  return res.status(500).send('"Internal Server Error"');
 };
 
 module.exports = userMiddleware;
