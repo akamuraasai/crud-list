@@ -43,7 +43,7 @@ const getCustomerByToken = async (Authorization) => {
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);
-    return {};
+    return { error: 500, message: err.message };
   }
 };
 
@@ -65,7 +65,7 @@ const getCustomerByTokenProd = async (Authorization) => {
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);
-    return {};
+    return { error: 500, message: err.message };
   }
 };
 
@@ -87,6 +87,14 @@ const userMiddleware = async (req, res, next) => {
   if (customerProd.id !== undefined) {
     req.userId = customerProd.id;
     return next();
+  }
+
+
+  if (customerProd.error) {
+    return res.status(customerProd.error).send(customerProd.message);
+  }
+  if (customer.error) {
+    return res.status(customer.error).send(customer.message);
   }
 
   return res.status(401).send('"Unauthorized"');
