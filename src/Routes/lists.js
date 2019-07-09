@@ -28,6 +28,7 @@ const routes = (router) => {
     const { userId } = req;
     const { id } = req.params;
     const list = await List.findOne({ where: { id, userId }, raw: true });
+    console.log('DETAIL userId', userId, 'id', id, 'list', list);
 
     res.send(productsToArray(list));
   });
