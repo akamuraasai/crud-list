@@ -35,9 +35,9 @@ const getCustomerByToken = async (Authorization) => {
       },
       body: '{"query":"{customer{id}}"}',
     });
-    const { data = {} } = await response.json();
-    const { customer = {} } = data;
-    const { id } = customer;
+    const { data } = await response.json();
+    const { customer } = data || {};
+    const { id } = customer || {};
 
     return { id };
   } catch (err) {
@@ -57,9 +57,9 @@ const getCustomerByTokenProd = async (Authorization) => {
       },
       body: '{"query":"{customer{id}}"}',
     });
-    const { data = {} } = await response.json();
-    const { customer = {} } = data;
-    const { id } = customer;
+    const { data } = await response.json();
+    const { customer } = data || {};
+    const { id } = customer || {};
 
     return { id };
   } catch (err) {
