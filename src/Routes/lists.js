@@ -20,6 +20,7 @@ const routes = (router) => {
       order: [['createdAt', 'DESC']],
       raw: true,
     });
+    console.log('LIST userId', userId, 'lists', lists);
     res.send(lists.map(productsToArray));
   });
 
