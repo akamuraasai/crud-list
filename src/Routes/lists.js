@@ -37,6 +37,7 @@ const routes = (router) => {
     const strProducts = products.join(',');
     const list = await List.create({ name, products: strProducts, userId });
     const obj = JSON.parse(JSON.stringify(list));
+    console.log('CREATE: name', name, 'products', products, 'obj', obj);
 
     res.status(201).send(productsToArray(obj));
   });

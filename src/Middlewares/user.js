@@ -73,7 +73,7 @@ const userMiddleware = async (req, res, next) => {
   const token = getToken(req);
   // const user = await getUserByToken(token);
   const customer = await getCustomerByToken(token);
-  console.log(customer);
+  console.log('customer staging', customer);
   if (customer.id !== undefined) {
     req.userId = customer.id;
     return next();
@@ -85,7 +85,7 @@ const userMiddleware = async (req, res, next) => {
   // }
 
   const customerProd = await getCustomerByTokenProd(token);
-  console.log(customerProd);
+  console.log('customer production', customerProd);
   if (customerProd.id !== undefined) {
     req.userId = customerProd.id;
     return next();
